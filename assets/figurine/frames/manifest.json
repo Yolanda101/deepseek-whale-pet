@@ -1,0 +1,470 @@
+{
+  "format": "image-reference-keyframes-v1",
+  "character": "DeepSeek 大肥鱼 · 手办版",
+  "frameSize": 384,
+  "canvasWidth": 384,
+  "canvasHeight": 384,
+  "fps": 8,
+  "ground": 354,
+  "states": {
+    "idle": {
+      "frameCount": 12,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        960,
+        90,
+        410,
+        90,
+        65,
+        45,
+        70,
+        45,
+        84,
+        51,
+        560,
+        90
+      ],
+      "durationSeconds": 2.56,
+      "fps": 4.688
+    },
+    "work": {
+      "frameCount": 12,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        136,
+        84,
+        99,
+        61,
+        112,
+        68,
+        143,
+        87,
+        190,
+        90,
+        130,
+        80
+      ],
+      "durationSeconds": 1.28,
+      "fps": 9.375
+    },
+    "walkLeft": {
+      "frameCount": 12,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        90,
+        55,
+        90,
+        55,
+        77,
+        48,
+        90,
+        55,
+        90,
+        55,
+        77,
+        48
+      ],
+      "durationSeconds": 0.83,
+      "fps": 14.458
+    },
+    "walkRight": {
+      "frameCount": 12,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        90,
+        55,
+        90,
+        55,
+        77,
+        48,
+        90,
+        55,
+        90,
+        55,
+        77,
+        48
+      ],
+      "durationSeconds": 0.83,
+      "fps": 14.458
+    },
+    "greeting": {
+      "frameCount": 11,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        170,
+        90,
+        124,
+        76,
+        143,
+        87,
+        130,
+        80,
+        150,
+        90,
+        380
+      ],
+      "durationSeconds": 1.52,
+      "fps": 7.237
+    },
+    "playful": {
+      "frameCount": 11,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        200,
+        90,
+        160,
+        90,
+        260,
+        90,
+        200,
+        90,
+        180,
+        90,
+        360
+      ],
+      "durationSeconds": 1.81,
+      "fps": 6.077
+    },
+    "dance": {
+      "frameCount": 12,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        190,
+        90,
+        210,
+        90,
+        190,
+        90,
+        220,
+        90,
+        200,
+        90,
+        210,
+        90
+      ],
+      "durationSeconds": 1.76,
+      "fps": 6.818
+    },
+    "feeding": {
+      "frameCount": 11,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        250,
+        90,
+        210,
+        90,
+        230,
+        90,
+        340,
+        90,
+        250,
+        90,
+        370
+      ],
+      "durationSeconds": 2.1,
+      "fps": 5.238
+    },
+    "tailwag": {
+      "frameCount": 15,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      "frameDurationsMs": [
+        170,
+        90,
+        105,
+        65,
+        87,
+        53,
+        118,
+        72,
+        102,
+        63,
+        87,
+        53,
+        112,
+        68,
+        290
+      ],
+      "durationSeconds": 1.535,
+      "fps": 9.772
+    },
+    "angry": {
+      "frameCount": 12,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "frameDurationsMs": [
+        143,
+        87,
+        150,
+        90,
+        118,
+        72,
+        220,
+        80,
+        90,
+        124,
+        76,
+        280
+      ],
+      "durationSeconds": 1.53,
+      "fps": 7.843
+    },
+    "dizzy": {
+      "frameCount": 13,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        130,
+        80,
+        230,
+        90,
+        250,
+        90,
+        160,
+        90,
+        650,
+        90,
+        340,
+        95,
+        130
+      ],
+      "durationSeconds": 2.425,
+      "fps": 5.361
+    },
+    "hungry": {
+      "frameCount": 11,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        170,
+        90,
+        210,
+        90,
+        280,
+        90,
+        170,
+        90,
+        750,
+        90,
+        400
+      ],
+      "durationSeconds": 2.43,
+      "fps": 4.527
+    },
+    "outing": {
+      "frameCount": 11,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        150,
+        90,
+        180,
+        90,
+        210,
+        90,
+        470,
+        90,
+        240,
+        90,
+        360
+      ],
+      "durationSeconds": 2.06,
+      "fps": 5.34
+    },
+    "crying": {
+      "frameCount": 11,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        143,
+        87,
+        250,
+        90,
+        300,
+        90,
+        540,
+        90,
+        320,
+        90,
+        350
+      ],
+      "durationSeconds": 2.35,
+      "fps": 4.681
+    },
+    "rice": {
+      "frameCount": 11,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        190,
+        90,
+        190,
+        90,
+        150,
+        90,
+        220,
+        90,
+        470,
+        90,
+        440
+      ],
+      "durationSeconds": 2.11,
+      "fps": 5.213
+    },
+    "remorse": {
+      "frameCount": 11,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        220,
+        90,
+        290,
+        90,
+        330,
+        90,
+        630,
+        90,
+        350,
+        90,
+        400
+      ],
+      "durationSeconds": 2.67,
+      "fps": 4.12
+    },
+    "review": {
+      "frameCount": 12,
+      "keyFrames": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "frameDurationsMs": [
+        260,
+        90,
+        180,
+        90,
+        220,
+        90,
+        260,
+        90,
+        210,
+        90,
+        240,
+        90
+      ],
+      "durationSeconds": 1.91,
+      "fps": 6.283
+    }
+  }
+}

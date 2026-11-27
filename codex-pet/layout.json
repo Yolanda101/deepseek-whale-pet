@@ -1,0 +1,985 @@
+{
+  "client": {
+    "bundle": "com.openai.codex",
+    "version": "26.1120.50957",
+    "build": "30866"
+  },
+  "canvas": [
+    1536,
+    2288
+  ],
+  "cell": [
+    192,
+    208
+  ],
+  "playback": "Idle loops. Other states normally play three cycles, then resume idle. Reduced motion can use the first cell only. Pointer gaze may replace idle, waving or running.",
+  "neutral": {
+    "row": 0,
+    "column": 6,
+    "desktopAndCloud": "idle/000.png",
+    "blankNeutralCompatibilityVariant": null
+  },
+  "transform": {
+    "scale": 0.48333333333333334,
+    "sourceAnchor": [
+      223.0,
+      353.0
+    ],
+    "pixelOffset": [
+      4,
+      19
+    ]
+  },
+  "states": {
+    "idle": {
+      "description": "待机、眨眼、左右甩尾。原生待机持续循环。",
+      "cycleMs": 6600,
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "source": "idle/000.png",
+          "sourceSHA256": "e8d5f7fabe0404d24dce25ef55bee01fda2e376a0619a9f90ffaeada719ae42a",
+          "durationMs": 1680,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            41,
+            33,
+            167,
+            191
+          ]
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "source": "idle/004.png",
+          "sourceSHA256": "9f258050f31be762917ddfb6a9210819731860e202bac236ea8d700a6851d843",
+          "durationMs": 660,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            39,
+            30,
+            168,
+            190
+          ]
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "source": "tailwag/002.png",
+          "sourceSHA256": "6b4d779cf0fdc95599be0283d9772f7228ecbd20eecc46a6da364e13133a5d8f",
+          "durationMs": 660,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            50,
+            33,
+            179,
+            190
+          ]
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "source": "tailwag/004.png",
+          "sourceSHA256": "a29a163e56836c9e72498d9315e38d6f20755e4e304208775550dabb8f89889b",
+          "durationMs": 840,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            50,
+            32,
+            180,
+            190
+          ]
+        },
+        {
+          "row": 0,
+          "column": 4,
+          "source": "tailwag/008.png",
+          "sourceSHA256": "593e1d77a066aa6ca4684dc90dbaa7a51c4e502116c308a0dd1cf737cd6fc205",
+          "durationMs": 840,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            50,
+            31,
+            169,
+            190
+          ]
+        },
+        {
+          "row": 0,
+          "column": 5,
+          "source": "tailwag/014.png",
+          "sourceSHA256": "135504508952dcb7ba8cf90cae3df2693b0e9b36d49c7a1abcb42948ecbc4f2f",
+          "durationMs": 1920,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            50,
+            32,
+            183,
+            190
+          ]
+        }
+      ]
+    },
+    "running-right": {
+      "description": "向右拖动时显示右行步态。",
+      "cycleMs": 1060,
+      "cells": [
+        {
+          "row": 1,
+          "column": 0,
+          "source": "walkRight/000.png",
+          "sourceSHA256": "2d7eb816ab38d1e86563ca68e5fbc73d9300647d549afddc8cc970dc4c0bc3e4",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            16,
+            35,
+            132,
+            190
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "source": "walkRight/002.png",
+          "sourceSHA256": "393a4f796606e0fd22a8e88b3e27ec2fd7e5da8c2ff643efe94cc49a5c40da88",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            11,
+            35,
+            131,
+            191
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "source": "walkRight/003.png",
+          "sourceSHA256": "f0f7bb4c63f92a1e71c263b4f3f66203bd2f4a1509152a859efb5b2edd2e97be",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            11,
+            34,
+            131,
+            190
+          ]
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "source": "walkRight/004.png",
+          "sourceSHA256": "0412aa3c024cfa562f8cb9d7019f556d624a31329a7136ea65714228c946a49d",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            12,
+            33,
+            131,
+            188
+          ]
+        },
+        {
+          "row": 1,
+          "column": 4,
+          "source": "walkRight/006.png",
+          "sourceSHA256": "d8205e937a07cf44b36ed3fb5e6ece16f819fe2105d7f6e279721829c8ed41b0",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            10,
+            35,
+            131,
+            190
+          ]
+        },
+        {
+          "row": 1,
+          "column": 5,
+          "source": "walkRight/008.png",
+          "sourceSHA256": "2aceb4a6a1fb372d670d742f93297b44c4e1f4c4e52eb9e381a1419d4a7cb534",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            8,
+            34,
+            131,
+            191
+          ]
+        },
+        {
+          "row": 1,
+          "column": 6,
+          "source": "walkRight/009.png",
+          "sourceSHA256": "08393cb05576c2ee005834b44361cc2025f11782369008538c7789fe00aca759",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            9,
+            33,
+            131,
+            189
+          ]
+        },
+        {
+          "row": 1,
+          "column": 7,
+          "source": "walkRight/010.png",
+          "sourceSHA256": "081cab0d52552b81d970be8365c26dda315c3309edfdab73413303e3e390fbc9",
+          "durationMs": 220,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            9,
+            33,
+            129,
+            188
+          ]
+        }
+      ]
+    },
+    "running-left": {
+      "description": "向左拖动时显示左行步态。",
+      "cycleMs": 1060,
+      "cells": [
+        {
+          "row": 2,
+          "column": 0,
+          "source": "walkLeft/000.png",
+          "sourceSHA256": "b1fc29771261c6f5260f0367b6a66256a14ca3b3feeb0b6c1454fdb5403d7ec9",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            53,
+            31,
+            175,
+            189
+          ]
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "source": "walkLeft/002.png",
+          "sourceSHA256": "6ee293076f26c48febabec500e28a43eca518e610056a9115ffe1124f740c9b2",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            56,
+            31,
+            176,
+            190
+          ]
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "source": "walkLeft/003.png",
+          "sourceSHA256": "1ddb30e8b8aa2c3d43cebc7b2df25cf673c6b58a22801929da5fbaeab3215c51",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            57,
+            29,
+            178,
+            189
+          ]
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "source": "walkLeft/004.png",
+          "sourceSHA256": "c5e8a17c5cf50b6ff5520a6fdc41318b6451b2ef42ec7c6eac8afa72100db9ab",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            58,
+            27,
+            180,
+            188
+          ]
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "source": "walkLeft/006.png",
+          "sourceSHA256": "4d90f71077237b805f0391da3faa78cb75a959e4489bf810c34d2a4c3dabad67",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            57,
+            32,
+            177,
+            189
+          ]
+        },
+        {
+          "row": 2,
+          "column": 5,
+          "source": "walkLeft/008.png",
+          "sourceSHA256": "726f5a75c5cd6dae69c546fcd785f444966d19835d4da89cb843f1161caed451",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            58,
+            33,
+            178,
+            190
+          ]
+        },
+        {
+          "row": 2,
+          "column": 6,
+          "source": "walkLeft/009.png",
+          "sourceSHA256": "48992e0345bb324240fca7e07e3faa72302b59554ff1ae62dd55662cf198b478",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            59,
+            32,
+            178,
+            189
+          ]
+        },
+        {
+          "row": 2,
+          "column": 7,
+          "source": "walkLeft/010.png",
+          "sourceSHA256": "3ce0908c2fa3c9a35c9672c5e9c87cde03d37a51ac1a140c5c2a58b8b25acce0",
+          "durationMs": 220,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            59,
+            30,
+            178,
+            188
+          ]
+        }
+      ]
+    },
+    "waving": {
+      "description": "首次唤醒时先挥手，再歪头托腮撒娇。",
+      "cycleMs": 700,
+      "cells": [
+        {
+          "row": 3,
+          "column": 0,
+          "source": "greeting/002.png",
+          "sourceSHA256": "8b2c52504f6515cf2611d3c022f85f70fc9475856cd15b227c353b821751e19b",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            40,
+            32,
+            168,
+            191
+          ]
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "source": "greeting/004.png",
+          "sourceSHA256": "59627d5a69b0a90b1e4b9e062dde4bd65f2ee201e8af2b961fe49a51ee2958da",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            45,
+            32,
+            174,
+            190
+          ]
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "source": "playful/004.png",
+          "sourceSHA256": "74a2f981d36b6b12234b44344229cf01c2ffcaf5060fdabc9be12ffe25fcd5b9",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            39,
+            34,
+            164,
+            190
+          ]
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "source": "playful/006.png",
+          "sourceSHA256": "6d08155b9adac4c0a97b4c285e5c7ee5776eefb1d19a3f824556115e70f0ffc6",
+          "durationMs": 280,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            40,
+            34,
+            162,
+            190
+          ]
+        }
+      ]
+    },
+    "jumping": {
+      "description": "光标移入角色时转身起跳，举起草帽出门，随后落地。",
+      "cycleMs": 840,
+      "cells": [
+        {
+          "row": 4,
+          "column": 0,
+          "source": "dance/002.png",
+          "sourceSHA256": "6d1304aa3cde29ac2a1102f6216f336839496d87a46416a0c274537b52e2dc5c",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            36,
+            33,
+            160,
+            189
+          ]
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "source": "dance/006.png",
+          "sourceSHA256": "acc385bcbceb0d9d81176b18aae533a16a0d948a25a04c020489d5b9e5111a27",
+          "durationMs": 140,
+          "sourceLiftPx": 14,
+          "visibleBounds": [
+            48,
+            20,
+            172,
+            182
+          ]
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "source": "outing/008.png",
+          "sourceSHA256": "ea4776ee8edb09a557dd5b665c12ade95fc8cbe83031ba917d3e4df93a03d73f",
+          "durationMs": 140,
+          "sourceLiftPx": 38,
+          "visibleBounds": [
+            35,
+            12,
+            175,
+            173
+          ]
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "source": "outing/006.png",
+          "sourceSHA256": "f9d14e675fd59e76de464f5192fa7ad619379e3c35d7c57effa93c15376f30db",
+          "durationMs": 140,
+          "sourceLiftPx": 14,
+          "visibleBounds": [
+            39,
+            21,
+            170,
+            183
+          ]
+        },
+        {
+          "row": 4,
+          "column": 4,
+          "source": "outing/010.png",
+          "sourceSHA256": "713e8c8039ab6add285456e2c2f9f6a60587c5bddeb5b5b017ea4c108f43206f",
+          "durationMs": 280,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            38,
+            29,
+            163,
+            190
+          ]
+        }
+      ]
+    },
+    "failed": {
+      "description": "错误通知出现时，先气鼓鼓地甩尾，再掉眼泪、擦泪。",
+      "cycleMs": 1220,
+      "cells": [
+        {
+          "row": 5,
+          "column": 0,
+          "source": "angry/002.png",
+          "sourceSHA256": "830d1a61ba62f58a51de28d88b24b74a3d820bc10efcca1468eccad4df65c4f6",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            49,
+            32,
+            183,
+            190
+          ]
+        },
+        {
+          "row": 5,
+          "column": 1,
+          "source": "angry/006.png",
+          "sourceSHA256": "35354d857876927c116896d2bf0a7a72b162720ca70d70384ddb70ca64e1f55c",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            47,
+            33,
+            183,
+            190
+          ]
+        },
+        {
+          "row": 5,
+          "column": 2,
+          "source": "angry/007.png",
+          "sourceSHA256": "b7c66159d4598afff8d28c206478a34bee1c451ad6da9ba7f7c65b986e824f28",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            46,
+            33,
+            183,
+            190
+          ]
+        },
+        {
+          "row": 5,
+          "column": 3,
+          "source": "angry/008.png",
+          "sourceSHA256": "e00c890e64833c509d4c23e1376839d298f8848eed39ea45f8b2f57bbb5614c6",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            29,
+            33,
+            156,
+            190
+          ]
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "source": "crying/002.png",
+          "sourceSHA256": "c2a3739dbc9cd911e8083b89627d9ac8380dadfacd03c5b86680376ea125e4c2",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            42,
+            32,
+            165,
+            191
+          ]
+        },
+        {
+          "row": 5,
+          "column": 5,
+          "source": "crying/004.png",
+          "sourceSHA256": "4fd2322136a5273e12ac84ce59bafc72424e330dfe844cbae52997e950dd2401",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            42,
+            31,
+            165,
+            190
+          ]
+        },
+        {
+          "row": 5,
+          "column": 6,
+          "source": "crying/006.png",
+          "sourceSHA256": "566c5211e4294de02741717f73a9bf0877e1bd3747820adc945c5f0ece876701",
+          "durationMs": 140,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            42,
+            32,
+            165,
+            191
+          ]
+        },
+        {
+          "row": 5,
+          "column": 7,
+          "source": "crying/008.png",
+          "sourceSHA256": "8e456d07bcee8da0d1d35e2820ea078eaac88733db2b5406b9d26fd0683be38e",
+          "durationMs": 240,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            40,
+            32,
+            163,
+            191
+          ]
+        }
+      ]
+    },
+    "waiting": {
+      "description": "等待确认时举空碗讨饭，接着舀饭、吃饭。",
+      "cycleMs": 1010,
+      "cells": [
+        {
+          "row": 6,
+          "column": 0,
+          "source": "hungry/002.png",
+          "sourceSHA256": "d38795f26b97dfc4e2e168ef885fe1eaeeab642bc129f90313c9b3c080469986",
+          "durationMs": 150,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            40,
+            33,
+            166,
+            190
+          ]
+        },
+        {
+          "row": 6,
+          "column": 1,
+          "source": "hungry/004.png",
+          "sourceSHA256": "a0364f719246eeeaa8fe8f189808a7e50b0f3a6fa398ac4ff903aa8188932bb9",
+          "durationMs": 150,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            39,
+            45,
+            169,
+            190
+          ]
+        },
+        {
+          "row": 6,
+          "column": 2,
+          "source": "hungry/008.png",
+          "sourceSHA256": "39e6e2b162be3dd70cef13faf8d0d02e574968a08139f22fa60fcaf63bb58e09",
+          "durationMs": 150,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            38,
+            43,
+            171,
+            191
+          ]
+        },
+        {
+          "row": 6,
+          "column": 3,
+          "source": "feeding/000.png",
+          "sourceSHA256": "f7bfdfde06757dfbc7d7df53104dc3fa0c51c11b503884926fbe3b3b84a43599",
+          "durationMs": 150,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            42,
+            32,
+            167,
+            190
+          ]
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "source": "feeding/004.png",
+          "sourceSHA256": "8afe5d725df30c0a294c9a63ae00fa5b06ada0a5325501e6c9ef58157044da8b",
+          "durationMs": 150,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            45,
+            32,
+            170,
+            190
+          ]
+        },
+        {
+          "row": 6,
+          "column": 5,
+          "source": "feeding/006.png",
+          "sourceSHA256": "3b9e76abc0246746cefc9e9bfff456265b18e7b1bcf259e68d6e7e097a813ca9",
+          "durationMs": 260,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            43,
+            31,
+            168,
+            190
+          ]
+        }
+      ]
+    },
+    "running": {
+      "description": "处理任务时在笔记本前敲键。",
+      "cycleMs": 820,
+      "cells": [
+        {
+          "row": 7,
+          "column": 0,
+          "source": "work/000.png",
+          "sourceSHA256": "137f239ce2095e467c1c15e29666c9608dea4966d4ade360888dc7ed5e9081a3",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            41,
+            32,
+            164,
+            190
+          ]
+        },
+        {
+          "row": 7,
+          "column": 1,
+          "source": "work/002.png",
+          "sourceSHA256": "7f0da9783dcae6aa84d146ab6f629184a80a13797e8a41d8ae4b08aa4b532011",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            40,
+            32,
+            163,
+            190
+          ]
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "source": "work/004.png",
+          "sourceSHA256": "fd05f8c47a60b6f4001ac3fa3eee059d95dc97118dde66e48c69e9820b84af50",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            41,
+            32,
+            164,
+            190
+          ]
+        },
+        {
+          "row": 7,
+          "column": 3,
+          "source": "work/006.png",
+          "sourceSHA256": "00aa0ceda4803e8f121f1772e68980b7060052f1127e60eee64232c9891b5b19",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            41,
+            35,
+            162,
+            190
+          ]
+        },
+        {
+          "row": 7,
+          "column": 4,
+          "source": "work/008.png",
+          "sourceSHA256": "cf3af09efc47f8b5111b71d5dd1bd26d906d8df355dbe4893dd2f46574654884",
+          "durationMs": 120,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            40,
+            27,
+            164,
+            190
+          ]
+        },
+        {
+          "row": 7,
+          "column": 5,
+          "source": "work/010.png",
+          "sourceSHA256": "d50529e85eb967919e59c47595cc03ed320fa48316217b9085f98703f755186e",
+          "durationMs": 220,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            41,
+            32,
+            164,
+            190
+          ]
+        }
+      ]
+    },
+    "review": {
+      "description": "成功通知出现时翻书检查，随后打瞌睡、晕倒、回神。",
+      "cycleMs": 1030,
+      "cells": [
+        {
+          "row": 8,
+          "column": 0,
+          "source": "review/000.png",
+          "sourceSHA256": "7737b46ebbc49b12a780616be08b665e937672857d5b1ce3a9fc6576f612c261",
+          "durationMs": 150,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            44,
+            33,
+            168,
+            190
+          ]
+        },
+        {
+          "row": 8,
+          "column": 1,
+          "source": "review/004.png",
+          "sourceSHA256": "8e282bf24860f6681fe31ba5724c1fa7f3c4094a52a601ad10a449557ea6c295",
+          "durationMs": 150,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            45,
+            33,
+            169,
+            190
+          ]
+        },
+        {
+          "row": 8,
+          "column": 2,
+          "source": "dizzy/002.png",
+          "sourceSHA256": "8e062ff162ac048f7f7a0431b8cd5f8035e75d5ea369ff752c6a7f170d5b165f",
+          "durationMs": 150,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            36,
+            36,
+            168,
+            191
+          ]
+        },
+        {
+          "row": 8,
+          "column": 3,
+          "source": "dizzy/004.png",
+          "sourceSHA256": "64ebd8e28fa02a1e07d914789cd46f94df1231164c99c195825883edec3f3de6",
+          "durationMs": 150,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            42,
+            34,
+            175,
+            191
+          ]
+        },
+        {
+          "row": 8,
+          "column": 4,
+          "source": "dizzy/008.png",
+          "sourceSHA256": "ddefd0a6aa78b7bd8c30e9b9953954faf568321608734e22c57218390c10c2f4",
+          "durationMs": 150,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            27,
+            51,
+            160,
+            191
+          ]
+        },
+        {
+          "row": 8,
+          "column": 5,
+          "source": "dizzy/010.png",
+          "sourceSHA256": "dc806919021c0dccdca78122c431f1d87592bea98b7f6108f39f977930e31fe6",
+          "durationMs": 280,
+          "sourceLiftPx": 0,
+          "visibleBounds": [
+            39,
+            43,
+            167,
+            191
+          ]
+        }
+      ]
+    }
+  },
+  "gaze": [
+    {
+      "row": 9,
+      "column": 0,
+      "clockwiseDegrees": 0.0,
+      "source": "look/000.png"
+    },
+    {
+      "row": 9,
+      "column": 1,
+      "clockwiseDegrees": 22.5,
+      "source": "look/022.5.png"
+    },
+    {
+      "row": 9,
+      "column": 2,
+      "clockwiseDegrees": 45.0,
+      "source": "look/045.png"
+    },
+    {
+      "row": 9,
+      "column": 3,
+      "clockwiseDegrees": 67.5,
+      "source": "look/067.5.png"
+    },
+    {
+      "row": 9,
+      "column": 4,
+      "clockwiseDegrees": 90.0,
+      "source": "look/090.png"
+    },
+    {
+      "row": 9,
+      "column": 5,
+      "clockwiseDegrees": 112.5,
+      "source": "look/112.5.png"
+    },
+    {
+      "row": 9,
+      "column": 6,
+      "clockwiseDegrees": 135.0,
+      "source": "look/135.png"
+    },
+    {
+      "row": 9,
+      "column": 7,
+      "clockwiseDegrees": 157.5,
+      "source": "look/157.5.png"
+    },
+    {
+      "row": 10,
+      "column": 0,
+      "clockwiseDegrees": 180.0,
+      "source": "look/180.png"
+    },
+    {
+      "row": 10,
+      "column": 1,
+      "clockwiseDegrees": 202.5,
+      "source": "look/202.5.png"
+    },
+    {
+      "row": 10,
+      "column": 2,
+      "clockwiseDegrees": 225.0,
+      "source": "look/225.png"
+    },
+    {
+      "row": 10,
+      "column": 3,
+      "clockwiseDegrees": 247.5,
+      "source": "look/247.5.png"
+    },
+    {
+      "row": 10,
+      "column": 4,
+      "clockwiseDegrees": 270.0,
+      "source": "look/270.png"
+    },
+    {
+      "row": 10,
+      "column": 5,
+      "clockwiseDegrees": 292.5,
+      "source": "look/292.5.png"
+    },
+    {
+      "row": 10,
+      "column": 6,
+      "clockwiseDegrees": 315.0,
+      "source": "look/315.png"
+    },
+    {
+      "row": 10,
+      "column": 7,
+      "clockwiseDegrees": 337.5,
+      "source": "look/337.5.png"
+    }
+  ]
+}

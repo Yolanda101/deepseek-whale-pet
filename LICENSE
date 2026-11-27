@@ -1,0 +1,17 @@
+DeepSeek Whale Pet licensing
+
+The original Swift source code and project scripts are licensed under the
+MIT License. Copyright (c) 2026 DeepSeek Whale Pet contributors.
+The complete license is in licenses/Code-MIT.txt.
+
+The character artwork, animation frames, expression icons, pet sprite sheet,
+and rendered previews are licensed under the Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International license. The project
+also releases its own contributions to the Mandarin lines and synthesized
+recordings under that license.
+
+See NOTICE.md for author credits, original works and changes. The Creative
+Commons legal text is in licenses/Character-LICENSE.txt and available at
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en .
+
+Upstream models and production tools retain their respective licenses.

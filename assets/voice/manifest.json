@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "lines": {
+    "greeting": [
+      {
+        "text": "你好呀，我是大肥鱼！",
+        "file": "greeting.wav"
+      }
+    ],
+    "dance": [
+      {
+        "text": "一起跳支舞吧！",
+        "file": "dance.wav"
+      }
+    ],
+    "playful": [
+      {
+        "text": "哎呀，别戳啦！",
+        "file": "playful.wav"
+      }
+    ],
+    "feeding": [
+      {
+        "text": "有白饭！我要开动啦！",
+        "file": "feeding.wav"
+      }
+    ],
+    "tailwag": [
+      {
+        "text": "看我甩个鲸尾！",
+        "file": "tailwag.wav"
+      }
+    ],
+    "angry": [
+      {
+        "text": "哼，吃我一尾巴！",
+        "file": "angry.wav"
+      }
+    ],
+    "dizzy": [
+      {
+        "text": "累晕啦……让我歇一会儿。",
+        "file": "dizzy.wav"
+      }
+    ],
+    "hungry": [
+      {
+        "text": "肚肚空了……能给我一条小鱼吗？",
+        "file": "hungry.wav"
+      }
+    ],
+    "outing": [
+      {
+        "text": "一起出去玩嘛！",
+        "file": "outing.wav"
+      }
+    ],
+    "crying": [
+      {
+        "text": "呜呜……陪我一会儿，好吗？",
+        "file": "crying.wav"
+      }
+    ],
+    "rice": [
+      {
+        "text": "白饭真香！再来一口。",
+        "file": "rice.wav"
+      }
+    ],
+    "remorse": [
+      {
+        "text": "是我弄错了……对不起。",
+        "file": "remorse.wav"
+      }
+    ],
+    "task_done": [
+      {
+        "text": "做完啦！可以吃饭啦！",
+        "file": "task_done.wav"
+      }
+    ]
+  }
+}
