@@ -1,0 +1,46 @@
+{
+  "defaultSeed": 617,
+  "takes": {
+    "greeting": {
+      "trimStartMs": 550
+    },
+    "dance": {
+      "trimStartMs": 370
+    },
+    "tailwag": {
+      "trimStartMs": 270
+    },
+    "angry": {
+      "trimStartMs": 200
+    },
+    "dizzy": {
+      "trimStartMs": 450
+    },
+    "hungry": {
+      "trimStartMs": 640
+    },
+    "outing": {
+      "trimStartMs": 370
+    },
+    "crying": {
+      "trimStartMs": 330
+    },
+    "rice": {
+      "trimStartMs": 390
+    },
+    "remorse": {
+      "trimStartMs": 290
+    },
+    "task_done": {
+      "trimStartMs": 330
+    },
+    "playful": {
+      "trimStartMs": 490,
+      "seed": 855
+    },
+    "feeding": {
+      "trimStartMs": 370,
+      "seed": 447
+    }
+  }
+}

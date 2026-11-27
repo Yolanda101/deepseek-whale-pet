@@ -14,19 +14,6 @@ PRODUCTION = Path(__file__).resolve().parent
 VOICE = PRODUCTION.parent
 BASE_WEIGHTS = "81fb76175ff74e69be25fef2cc3e54f016df3034f1514c8e1c89da06a3510cff"
 CODEC_WEIGHTS = "836b7b357f5ea43e889936a3709af68dfe3751881acefe4ecf0dbd30ba571258"
-DEFAULT_SEED = 738
-TAKE_SEEDS = {"feeding": 451, "crying": 192, "remorse": 193, "angry": 451}
-TRIM_LEAD_MS = {
-    "dance": 280,
-    "dizzy": 350,
-    "hungry": 400,
-    "outing": 270,
-    "playful": 400,
-    "remorse": 230,
-    "rice": 310,
-    "tailwag": 360,
-    "task_done": 320,
-}
 
 
 def digest(path):
@@ -62,7 +49,7 @@ def measure(path):
     )
 
 
-def write_take(path, waveform, rate):
+def write_take(path, waveform, rate, trim_start_ms=0):
     wave = np.asarray(waveform, dtype=np.float32).squeeze()
     if wave.ndim != 1 or len(wave) < rate / 3 or not np.isfinite(wave).all():
         raise ValueError(f"Invalid generated waveform for {path.name}")
@@ -72,7 +59,7 @@ def write_take(path, waveform, rate):
     active = np.flatnonzero(energy > 10 ** (-49 / 10))
     if not len(active):
         raise ValueError(f"No speech found for {path.name}")
-    start = max(0, (active[0] - 7) * block)
+    start = max(round(trim_start_ms * rate / 1000), (active[0] - 7) * block, 0)
     stop = min(len(wave), (active[-1] + 12) * block)
     wave = wave[start:stop].copy()
     with tempfile.TemporaryDirectory() as tmp:
@@ -87,6 +74,8 @@ def write_take(path, waveform, rate):
     measured = measure(path)
     return {
         "file": path.name,
+        "rawStartMs": round(1000 * start / rate),
+        "rawEndMs": round(1000 * stop / rate),
         "durationSeconds": round(len(pcm) / rate, 3),
         "durationMs": round(len(pcm) * 1000 / rate),
         "sampleRateHz": rate,
@@ -96,7 +85,7 @@ def write_take(path, waveform, rate):
     }
 
 
-def render_result(output, results):
+def render_result(output, results, trim_start_ms=0, raw_output=None):
     import mlx.core as mx
 
     clips = list(results)
@@ -106,78 +95,78 @@ def render_result(output, results):
         )
     audio = clips[0].audio
     mx.eval(audio)
-    return write_take(output, audio, int(clips[0].sample_rate))
+    rate = int(clips[0].sample_rate)
+    if raw_output:
+        raw_output.mkdir(exist_ok=True, parents=True)
+        wavfile.write(
+            raw_output / output.name,
+            rate,
+            np.asarray(audio, dtype=np.float32).squeeze(),
+        )
+    return write_take(output, audio, rate, trim_start_ms)
 
 
 def main():
+    import mlx.core as mx
+    from mlx_audio.tts.utils import load_model
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "model", type=Path, help="Local Qwen3-TTS 1.7B Base MLX BF16 directory"
     )
     parser.add_argument("--output", type=Path, default=VOICE)
     parser.add_argument("--only", nargs="+")
+    parser.add_argument(
+        "--seed", type=int, help="Override the chosen take for an audition"
+    )
+    parser.add_argument(
+        "--raw", type=Path, help="Optional directory for unedited float waveforms"
+    )
     args = parser.parse_args()
-    text = json.loads((VOICE / "manifest.json").read_text())["lines"]
-    names = args.only or list(text)
-    if set(names) - set(text):
+    lines = json.loads((VOICE / "manifest.json").read_text())["lines"]
+    names = args.only or list(lines)
+    if set(names) - set(lines):
         parser.error("Unknown line ID")
     options = json.loads((PRODUCTION / "reference.json").read_text())
     reference = PRODUCTION / "reference.wav"
     check_file(reference, options["referenceSha256"])
-    model = None
-    if any(name != "greeting" for name in names):
-        import mlx.core as mx
-        from mlx_audio.tts.utils import load_model
-
-        check_file(args.model / "model.safetensors", BASE_WEIGHTS)
-        check_file(args.model / "speech_tokenizer/model.safetensors", CODEC_WEIGHTS)
-        model = load_model(str(args.model))
-    args.output.mkdir(parents=True, exist_ok=True)
+    check_file(args.model / "model.safetensors", BASE_WEIGHTS)
+    check_file(args.model / "speech_tokenizer/model.safetensors", CODEC_WEIGHTS)
+    recipe = json.loads((PRODUCTION / "takes.json").read_text())
+    model = load_model(str(args.model))
     log = args.output / "production" / "recordings.json"
-    log.parent.mkdir(exist_ok=True)
+    log.parent.mkdir(parents=True, exist_ok=True)
     records = json.loads(log.read_text()) if log.is_file() else {}
     for name in names:
-        caption = text[name][0]["text"]
-        dest = args.output / text[name][0]["file"]
-        if name == "greeting":
-            source = PRODUCTION / "greeting-original.wav"
-            check_file(source, options["greetingSha256"])
-            rate, samples = wavfile.read(source)
-            start = round(options["greetingTrimStartSeconds"] * rate)
-            recorded = write_take(
-                dest, samples[start:].astype(np.float32) / 32768, rate
-            )
-            recorded.update(
-                source="Qwen official Space, Qwen3-TTS-12Hz-1.7B-Base",
-                sourceSHA256=options["greetingSha256"],
-                sourceTrimStartSeconds=options["greetingTrimStartSeconds"],
-            )
-        else:
-            seed = TAKE_SEEDS.get(name, DEFAULT_SEED)
-            mx.random.seed(seed)
-            results = model.generate(
-                text=caption,
-                ref_audio=str(reference),
-                ref_text=options["referenceText"],
-                lang_code="Chinese",
-                temperature=0.82,
-                top_p=0.96,
-                max_tokens=170,
-            )
-            recorded = render_result(dest, results)
-            recorded["seed"] = seed
-            if name in TRIM_LEAD_MS:
-                rate, samples = wavfile.read(dest)
-                offset = round(TRIM_LEAD_MS[name] * rate / 1000)
-                recorded.update(
-                    write_take(dest, samples[offset:].astype(np.float32) / 32768, rate)
-                )
-                recorded["trimLeadMs"] = TRIM_LEAD_MS[name]
-        records[name] = {**recorded, "text": caption}
+        take = recipe["takes"].get(name, {})
+        seed = (
+            args.seed
+            if args.seed is not None
+            else take.get("seed", recipe["defaultSeed"])
+        )
+        trim = take.get("trimStartMs", 0) if args.seed is None else 0
+        line = lines[name][0]
+        mx.random.seed(seed)
+        results = model.generate(
+            text=line["text"],
+            ref_audio=str(reference),
+            ref_text=options["referenceText"],
+            lang_code="Chinese",
+            temperature=0.82,
+            top_p=0.96,
+            max_tokens=170,
+        )
+        recorded = render_result(args.output / line["file"], results, trim, args.raw)
+        records[name] = {
+            **recorded,
+            "seed": seed,
+            "text": line["text"],
+            "referenceSha256": options["referenceSha256"],
+        }
         staged = log.with_suffix(".tmp")
         staged.write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n")
         staged.replace(log)
-        print(f"{name} {recorded['durationMs']} ms", flush=True)
+        print(name, recorded["durationMs"], "ms", flush=True)
 
 
 if __name__ == "__main__":

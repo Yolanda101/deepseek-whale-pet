@@ -1,11 +1,10 @@
 {
   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
   "source": "https://huggingface.co/spaces/Qwen/Qwen3-TTS",
-  "referenceText": "你好呀，我是大肥鱼！一起出去玩嘛！肚肚空了，能给我一条小鱼吗？",
-  "voiceDescription": "二十岁左右年轻女生的清甜软萌声线，像可爱的Q版动漫鲸鱼娘。普通话标准，声音轻盈圆润，温柔亲近，有自然的鼻腔共鸣和微笑感。音域偏高但柔和，语速轻快，语句连贯自然。打招呼时开心，邀请出门时轻轻撒娇，肚子饿时软软地央求。",
-  "referenceSha256": "1a6fa616104b42bbcefdefa77e7a6a0cf23744b20c550d7ec1eaac3cbbb882c5",
   "baseRepository": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-bf16",
   "baseRevision": "a6eb4f68e4b056f1215157bb696209bc82a6db48",
-  "greetingSha256": "8790955681ca37d8b8a61bae8e3d63138b4cf0883b838e4188260c6cec32fc76",
-  "greetingTrimStartSeconds": 0.78
+  "referenceText": "你好呀，我是大肥鱼！一起出去玩嘛！肚肚空了，能给我一条小鱼吗？",
+  "voiceDescription": "年轻成年女生的动漫角色声线，俏皮甜美、元气可爱。嗓音明亮软糯，音调轻快有自然起伏，像一位有点小傲娇的小鲸鱼女孩在和熟悉的人说话。普通话标准，咬字清晰，句末带轻轻的撒娇和笑意。欢迎时开心，邀请出门时兴奋，肚子饿时可怜巴巴。",
+  "referenceSha256": "8ea4f165f0db554c9eafe9f1300eaf4dfbb3a42c6d54c2851fac5441b8f99e7a",
+  "durationSeconds": 5.6
 }

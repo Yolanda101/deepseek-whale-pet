@@ -8,7 +8,7 @@
 
 - Codex 运行任务时用笔记本工作，空闲时在屏幕内散步。
 - 鼠标悬停显示白色表情面板，每页两列三行，左右翻页，点击播放完整动作。
-- 1.9 为 12 个表情和任务完成提醒重新配音。大肥鱼用同一套原创普通话声线打招呼、撒娇、生气和道歉。字幕逐句对应，动作先结束时，声音继续读完。
+- 1.10 采用活泼调皮的原创普通话声线，重新录制了 12 个表情和任务完成提醒。字幕逐句对应，动作先结束时，声音继续读完。
 - 半透明白底对话框，纯黑粗体台词。
 - 可拖动、静音、隐藏，选择闲时散步或原地休息。
 - 尺寸可跟随 Codex 的宠物设置，也可在菜单中独立调整。
@@ -19,7 +19,7 @@
 
 ## 下载
 
-在本仓库主页的 Releases 页面下载 `DeepSeekWhalePet-v1.9-macos-arm64.zip`。当前发布包适用于 Apple Silicon Mac，系统要求为 macOS 13 或更新版本。应用采用本机临时签名，尚未经过 Apple 公证。
+在本仓库主页的 Releases 页面下载 `DeepSeekWhalePet-v1.10-macos-arm64.zip`。当前发布包适用于 Apple Silicon Mac，系统要求为 macOS 13 或更新版本。应用采用本机临时签名，尚未经过 Apple 公证。
 
 解压后可直接打开 `dist/DeepSeek大肥鱼桌宠.app` 使用独立桌宠。要安装到当前用户的 Applications 目录并启用 Codex 表情助手，在解压目录运行以下命令，需要 Python 3。
 
@@ -74,6 +74,6 @@ python3 app/tests/verify_native.py dist/DeepSeek大肥鱼桌宠.app /tmp/whale-n
 
 ## 署名与许可
 
-本项目是社区同人桌宠。鲸鱼娘「溟月」原作者为上善无形，DeepSeek 女仆版由 ZipZipPipe 设计。原版动画来自 PC2005-cloud 的 dsh-pet。手办动作及图标由本项目使用 Image 生成并整理，本项目在 Qwen 官方演示中用 VoiceDesign 设计普通话声线，再用同一段参考声音录制全部台词。问候由官方演示中的 Base 模型合成，其余 12 句在 Apple 芯片上用同款 Base 模型合成。成品录音随桌宠离线播放。[素材来源及修改说明](assets/素材署名.md)
+本项目是社区同人桌宠。鲸鱼娘「溟月」原作者为上善无形，DeepSeek 女仆版由 ZipZipPipe 设计。原版动画来自 PC2005-cloud 的 dsh-pet。手办动作及图标由本项目使用 Image 生成并整理。我们在 Qwen 官方演示中用 VoiceDesign 设计活泼调皮的普通话声线，再以这段合成样音为参考，在 Apple 芯片上用 Qwen3-TTS 1.7B Base 录制全部 13 句。成品录音随桌宠离线播放。[素材来源及修改说明](assets/素材署名.md)
 
 本项目原创代码采用 MIT。角色、动画、图标、角色预览及本项目的合成录音采用 CC BY-NC-SA 4.0。分享时需保留署名、标明改动并沿用相同许可。具体范围见 [LICENSE](LICENSE) 和 [NOTICE](NOTICE.md)。
