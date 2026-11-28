@@ -9,6 +9,7 @@ import plistlib
 import shutil
 import struct
 import subprocess
+import sys
 import tempfile
 
 
@@ -16,6 +17,9 @@ SOURCE = Path(__file__).resolve().parent
 ROOT = SOURCE.parent
 ASSETS = ROOT / "assets"
 SHARED = SOURCE / "shared"
+sys.path.insert(0, str(ROOT / "companion"))
+from dialogue_assets import install as install_dialogue
+
 OUTPUT = ROOT / "dist" / "DeepSeek大肥鱼桌宠.app"
 BUNDLE_ID = "com.local.deepseek.whalepet"
 BASE_ACTIONS = ("greeting", "dance", "playful", "feeding")
@@ -108,7 +112,8 @@ def native_geometry(resources):
     (resources / "NativeFrames.json").write_text(json.dumps(geometry))
 
 
-def build(destination):
+def build(destination, module_cache_path=None):
+    destination = destination.expanduser().resolve()
     destination.parent.mkdir(parents=True, exist_ok=True)
     if destination.exists():
         prior = destination / "Contents" / "Info.plist"
@@ -141,6 +146,7 @@ def build(destination):
             NSPrincipalClass="NSApplication",
         )
         (contents / "Info.plist").write_bytes(plistlib.dumps(plist))
+        install_dialogue(resources, "whale")
 
         motion = ASSETS / "motion"
         frames = resources / "Frames"
@@ -171,7 +177,8 @@ def build(destination):
                            (motion / "ASSET-NOTICE.md", "Animation-NOTICE.md")]:
             shutil.copy2(path, resources / name)
 
-        cache = Path(tempfile.gettempdir()) / "deepseek-whale-swift-cache"
+        cache = module_cache_path.expanduser().resolve() if module_cache_path else temp_dir / "swift-cache"
+        cache.mkdir(parents=True, exist_ok=True)
         compiler = ["/usr/bin/swiftc", "-O", "-target", f"{platform.machine()}-apple-macos13.0", "-module-cache-path", str(cache)]
         common = [SOURCE / name for name in ("Animation.swift", "WhaleSpeech.swift", "ExpressionPanel.swift", "Storage.swift", "WhaleWindowOverlap.swift")]
         common += [SHARED / name for name in ("ActivityMonitor.swift", "NativePetSize.swift")]
@@ -210,5 +217,6 @@ def build(destination):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="构建大肥鱼 macOS 桌宠")
     parser.add_argument("--output", type=Path, default=OUTPUT)
+    parser.add_argument("--module-cache-path", type=Path)
     args = parser.parse_args()
-    build(args.output.resolve())
+    build(args.output, args.module_cache_path)

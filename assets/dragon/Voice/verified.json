@@ -1,0 +1,30 @@
+{
+  "complete": true,
+  "count": 23,
+  "files": {
+    "Voice/greeting.wav": "597318662628f5e2e99ac4b0015ce53eb407a0841404d687f7f2e2540ab893fb",
+    "Care/check_in.wav": "b71c41bc0af88b68bf3c36f62ed285d92d971341565d0a06e435ee6256c29832",
+    "Voice/playful.wav": "4fd8b9c186a3497e6fd832bc570d0d1bc437c510358e647c4be93917040ea7c7",
+    "Voice/dance.wav": "309ad525da8bb07b117fe597ca63e5fa37f5b1cc36db0b45c3261ffc520a8e5f",
+    "Voice/task_done.wav": "2652f253b7325713840e5685ef575503467ee19d6a22ee0a42d086acdaa3bcb6",
+    "Voice/star_catch.wav": "dfc050dca18902f97ac0732733e5c06ad1bbb98946dac53cacd967c846612fb5",
+    "Voice/star_dance.wav": "2bcad7c317cc350df737d1253804431a096083d49c5f69caff5fb07e9263d98d",
+    "Voice/cheer.wav": "c48e215dcbe7cd2076cec9fb8dd68f92bf62970159078691c7ce32c0c9953d6d",
+    "Voice/shy.wav": "6caf1f62a71106a0e601913212e1784ee62168e8649b21fe3f11e3f96aafaade",
+    "Voice/sleepy.wav": "c1e4b6f8712f529b29c8c9d0c78b3bc58e9720c107f5e6fedee380bb54a0c201",
+    "Care/hello.wav": "0540ac09502a8c8be8a1e463d2c01ff7c4d24335d6739ecbd750a0ee3113852b",
+    "Care/bailong.wav": "072f7849de0f8f56535d472967c6d87d6768ae02008d854c9d7263d11da5517d",
+    "Care/good_thing.wav": "5f4e7fbf84ed779a6fdb7931cac5b51bb8738bb687cd5479f791c40996337ce1",
+    "Care/water.wav": "81264bc51c18237928977058f754dc894489442b0dece47df9a11099320dce9f",
+    "Care/stretch.wav": "4e7aae9b10cf9543e13776cda498f860c5f2d7f8037db0a829026da00bdc2208",
+    "Care/smile.wav": "99f2ea0944cd472490523573d9c52faac39ace78bfaf9802e0c2dc9efb771387",
+    "Care/take_it_easy.wav": "b4604576ee0d7d0d25c444befb7662cc8a55a27fd8d0ec6f0b7b2a951882c8db",
+    "Social/highfive.wav": "bd4848591eeca6eedca3ee0c90dbffbe933d0abb4b7abc31bf4d06447424814a",
+    "Social/nuzzle.wav": "c750a3308e238d28d2866540d4905408461693eb4ad9a814d4ee80bd7deac128",
+    "Social/duet.wav": "99f119e11ccc0661a7474783dd5a127b575a2d5d5136738357e35e1ab7ff82a0",
+    "Social/beckon.wav": "9c5d299689eec89363ca62064123878a44277e980563a61ef1e3c8a24649db88",
+    "Social/starpass.wav": "214859403d3b4759ef2d8dc8467d29ee4f74773ce733845655f21429fe1a923f",
+    "Social/chase.wav": "6bfd3af7b1ec64a883437a87842e60628b22df9e6ee28061a655027ff08d3011"
+  },
+  "careCaptionsSha256": "c1283a40d0127d0e8260a05ce417d915933bd5f764f92763dfe03bf0f995cf25"
+}

@@ -1,10 +1,10 @@
-DeepSeek Whale Pet licensing
+Desktop Pet Studio / DeepSeek Whale Pet licensing
 
 The original Swift source code and project scripts are licensed under the
 MIT License. Copyright (c) 2026 DeepSeek Whale Pet contributors.
 The complete license is in licenses/Code-MIT.txt.
 
-The character artwork, animation frames, expression icons, pet sprite sheet,
+The included DeepSeek whale character artwork, animation frames, expression icons, pet sprite sheet,
 and rendered previews are licensed under the Creative Commons
 Attribution-NonCommercial-ShareAlike 4.0 International license. The project
 also releases its own contributions to the Mandarin lines and synthesized
@@ -15,3 +15,7 @@ Commons legal text is in licenses/Character-LICENSE.txt and available at
 https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en .
 
 Upstream models and production tools retain their respective licenses.
+
+White Dragon artwork is not distributed in this repository or public app.
+The asset-import feature does not grant redistribution rights to imported
+artwork. See assets/dragon/NOTICE.md for upstream notices.

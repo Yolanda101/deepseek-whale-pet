@@ -12,7 +12,13 @@ final class ActivityMonitor {
     }
 
     static var defaultCodexHome: URL {
-        if let override = ProcessInfo.processInfo.environment["CODEX_HOME"], !override.isEmpty {
+        let environment = ProcessInfo.processInfo.environment
+        if environment["DESKTOP_PET_MANAGED"] == "1",
+           environment["DESKTOP_PET_HUB_QUIET"] == "1",
+           let fixture = environment["DESKTOP_PET_ACTIVITY_TEST_HOME"], fixture.hasPrefix("/") {
+            return URL(fileURLWithPath: fixture, isDirectory: true)
+        }
+        if let override = environment["CODEX_HOME"], !override.isEmpty {
             return URL(fileURLWithPath: override, isDirectory: true)
         }
         return FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".codex", isDirectory: true)

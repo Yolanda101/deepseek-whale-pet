@@ -4,6 +4,11 @@ import Foundation
 
 private let appName = "DeepSeek 大肥鱼"
 
+private func requestedWidth(_ value: String?) -> Int? {
+    guard let width = value.flatMap(Int.init), width == NativePetSize.clamp(width) else { return nil }
+    return width
+}
+
 final class WhalePet: NSObject, NSApplicationDelegate, NSMenuDelegate {
     private let storage: Storage
     private var preferences: Preferences
@@ -14,6 +19,7 @@ final class WhalePet: NSObject, NSApplicationDelegate, NSMenuDelegate {
     private let resources: URL
     private let version: String
     private let unattendedTest: Bool
+    private let managerPID: pid_t?
     private var statusItem: NSStatusItem?
     private var maintenanceTimer: Timer?
     private var active: Bool?
@@ -37,6 +43,12 @@ final class WhalePet: NSObject, NSApplicationDelegate, NSMenuDelegate {
         self.version = version
         let env = ProcessInfo.processInfo.environment
         unattendedTest = env["WHALE_PET_UI_TEST"] == "1" && env["WHALE_PET_DATA_DIR"] != nil
+        if storage.instanceID != nil, let value = env["DESKTOP_PET_MANAGER_PID"],
+           let pid = pid_t(value), pid > 1 {
+            managerPID = pid
+        } else {
+            managerPID = nil
+        }
         let skin = preferences.skin.flatMap(Skin.init(rawValue:)).flatMap {
             library.skins.contains($0) ? $0 : nil
         } ?? library.skins[0]
@@ -65,7 +77,7 @@ final class WhalePet: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
         stage.contextMenu = { [weak self] in self?.makeMenu() ?? NSMenu() }
 
-        if !unattendedTest {
+        if storage.instanceID == nil && !unattendedTest {
             let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
             item.button?.title = "大肥鱼"
             item.button?.toolTip = appName
@@ -146,6 +158,10 @@ final class WhalePet: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     private func maintain() {
+        if let managerPID, getppid() != managerPID {
+            NSApp.terminate(nil)
+            return
+        }
         let width = preferences.independentWidth.map(NativePetSize.clamp) ?? nativeSize.width()
         if width != stage.width { stage.setWidth(width); writeStatus() }
         stage.setVisible(!preferences.hidden && displayAvailable)
@@ -178,6 +194,7 @@ final class WhalePet: NSObject, NSApplicationDelegate, NSMenuDelegate {
             "app": bundleIdentity,
             "version": version,
             "pid": ProcessInfo.processInfo.processIdentifier,
+            "menuBarIcon": statusItem != nil,
             "running": running,
             "visible": stage.isVisible,
             "hidden": preferences.hidden,
@@ -197,6 +214,7 @@ final class WhalePet: NSObject, NSApplicationDelegate, NSMenuDelegate {
             "completedActions": stage.completedActions,
             "completedSwims": stage.completedSwims,
             "position": ["x": frame.minX, "y": frame.minY],
+            "size": ["width": frame.width, "height": frame.height],
             "caption": stage.caption as Any? ?? NSNull(),
             "voice": stage.speechStatus,
             "captionWindowNumber": stage.captionWindowNumber,
@@ -205,6 +223,18 @@ final class WhalePet: NSObject, NSApplicationDelegate, NSMenuDelegate {
             "playbackError": stage.playbackError as Any? ?? NSNull(),
             "updatedAt": Date().timeIntervalSince1970,
         ]
+        if let instanceID = storage.instanceID {
+            report["instanceID"] = instanceID
+            report["interactionReady"] = active == false && stage.interactionReady
+            report["interaction"] = stage.interactionStatus as Any? ?? NSNull()
+            report["interactionCompleted"] = stage.interactionCompleted
+            report["interactionCancelled"] = stage.interactionCancelled
+            report["lastInteraction"] = stage.lastInteraction as Any? ?? NSNull()
+            report["dialogue"] = stage.dialogueStatus as Any? ?? NSNull()
+            report["lastDialogue"] = stage.lastDialogue as Any? ?? NSNull()
+            report["effectVisible"] = stage.interactionEffectName != nil
+            report["effect"] = stage.interactionEffectName as Any? ?? NSNull()
+        }
         if let lastCommand { report["lastCommand"] = lastCommand }
         storage.write(report)
     }
@@ -221,11 +251,22 @@ final class WhalePet: NSObject, NSApplicationDelegate, NSMenuDelegate {
         case "skin":
             if let value, let skin = Skin(selection: value), library.skins.contains(skin) { setSkin(skin) }
             else { success = false }
+        case "size":
+            let width = requestedWidth(value)
+            if value == "follow" || width != nil { sizeChanged(width) }
+            else { success = false }
         case "action":
             if let value, let pose = Pose(rawValue: value), Pose.actions.contains(pose) {
                 if preferences.hidden { setHidden(false) }
                 success = stage.play(pose)
             } else { success = false }
+        case "interact":
+            if storage.instanceID != nil, active == false, let interaction = WhaleInteraction.parse(value) {
+                success = stage.beginInteraction(interaction)
+            } else { success = false }
+        case "cancel-interaction":
+            let id = value.flatMap(UUID.init(uuidString:))
+            success = storage.instanceID != nil && (value == nil || id != nil) && stage.cancelInteraction(matching: id)
         case "quit": break
         default: success = false
         }
@@ -358,7 +399,7 @@ private func writeJSON(_ report: Any) throws {
 
 private func run() throws {
     let arguments = Array(CommandLine.arguments.dropFirst())
-    let storage = Storage()
+    let storage = try Storage.companion()
     let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
     guard let resources = Bundle.main.resourceURL else { throw AssetError("无法读取大肥鱼资源") }
     switch arguments {
@@ -370,9 +411,11 @@ private func run() throws {
         --verify-assets
         --action \(Pose.actions.map(\.rawValue).joined(separator: "|"))
         --skin figurine|original
+        --size \(NativePetSize.minimum)..\(NativePetSize.maximum) | follow
         --show | --hide | --quit
         --version
         """)
+        if storage.instanceID != nil { print("--interact JSON | --cancel-interaction [UUID]") }
     case ["--version"]:
         print(version)
     case ["--verify-assets"]:
@@ -386,7 +429,8 @@ private func run() throws {
         try writeJSON(status)
     case ["--native-status"]:
         let service = storage.nativeExpressions
-        var status = service.send("status") ?? service.snapshot()
+        let response = storage.instanceID == nil ? service.send("status") : nil
+        var status = response ?? service.snapshot()
         status["running"] = service.isRunning
         try writeJSON(status)
     case []:
@@ -407,7 +451,11 @@ private func run() throws {
         let single = ["show", "hide", "quit"].contains(first) && arguments.count == 1
         let action = first == "action" && argument.flatMap(Pose.init(rawValue:)).map(Pose.actions.contains) == true
         let skin = first == "skin" && argument.flatMap(Skin.init(selection:)) != nil
-        guard arguments[0].hasPrefix("--"), single || action || skin else {
+        let size = first == "size" && (argument == "follow" || requestedWidth(argument) != nil)
+        let interact = first == "interact" && storage.instanceID != nil && WhaleInteraction.parse(argument) != nil
+        let cancel = first == "cancel-interaction" && storage.instanceID != nil &&
+            (arguments.count == 1 || argument.flatMap(UUID.init(uuidString:)) != nil)
+        guard arguments[0].hasPrefix("--"), single || action || skin || size || interact || cancel else {
             throw AssetError("参数无效，请运行 --help")
         }
         guard let result = storage.send(first, argument: argument),

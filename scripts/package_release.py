@@ -30,7 +30,7 @@ def main():
     destination = OUTPUT / (name + ".zip")
 
     files = {}
-    for directory in ("dist", "codex-pet", "licenses"):
+    for directory in (str(BUNDLE.relative_to(ROOT)), "codex-pet", "licenses"):
         for path in (ROOT / directory).rglob("*"):
             if path.is_symlink():
                 raise ValueError(f"Unsupported symbolic link {path.relative_to(ROOT)}")

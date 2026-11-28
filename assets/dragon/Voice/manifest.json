@@ -1,0 +1,29 @@
+{
+  "character": "GPT 白龙",
+  "format": "24000 Hz mono signed 16-bit PCM WAV",
+  "lines": {
+    "Voice/greeting": "你好，我是白龙！",
+    "Care/check_in": "今天过得怎么样？",
+    "Voice/playful": "再陪我一会儿，好不好？",
+    "Voice/dance": "一起来跳舞吧！",
+    "Voice/task_done": "任务完成啦！",
+    "Voice/star_catch": "白龙，接住这颗星星！",
+    "Voice/star_dance": "白龙，一起来跳舞吧！",
+    "Voice/cheer": "别着急，我陪你一起完成。",
+    "Voice/shy": "哎呀，这样看着我，我会不好意思的。",
+    "Voice/sleepy": "有一点困了，陪我休息一小会儿吧。",
+    "Care/hello": "嗨，见到你真好！",
+    "Care/bailong": "你好呀，白龙来打招呼啦。",
+    "Care/good_thing": "今天有没有什么好玩的事？",
+    "Care/water": "喝口水吧。",
+    "Care/stretch": "伸个懒腰吧。",
+    "Care/smile": "希望今天有件小事，能让你笑一笑。",
+    "Care/take_it_easy": "累了就休息一下吧。",
+    "Social/highfive": "击个掌，默契满分！",
+    "Social/nuzzle": "靠近一点，让我陪着你。",
+    "Social/duet": "跟上我的节拍，一起跳吧！",
+    "Social/beckon": "大肥鱼，来这边一起玩！",
+    "Social/starpass": "接好啦，这颗星星送给你！",
+    "Social/chase": "来追我呀，看看谁更快！"
+  }
+}

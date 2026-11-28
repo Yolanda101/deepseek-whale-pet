@@ -1,0 +1,10 @@
+[
+  {"id": "hello", "text": "嗨，见到你真好！"},
+  {"id": "bailong", "text": "你好呀，白龙来打招呼啦。"},
+  {"id": "check_in", "text": "今天过得怎么样？"},
+  {"id": "good_thing", "text": "今天有没有什么好玩的事？"},
+  {"id": "water", "text": "喝口水吧。"},
+  {"id": "stretch", "text": "伸个懒腰吧。"},
+  {"id": "smile", "text": "希望今天有件小事，能让你笑一笑。"},
+  {"id": "take_it_easy", "text": "累了就休息一下吧。"}
+]

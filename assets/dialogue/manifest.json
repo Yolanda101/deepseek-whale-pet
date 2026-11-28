@@ -1,0 +1,329 @@
+{
+  "version": 1,
+  "scripts": {
+    "highfive-dragon": {
+      "behavior": "highfive",
+      "initiator": "dragon",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "dragon",
+          "text": "做得好，来击个掌吧！",
+          "file": "highfive-dragon-0.wav",
+          "duration": 1.6
+        },
+        {
+          "index": 1,
+          "speaker": "whale",
+          "text": "拍准没？我手有点小。",
+          "file": "highfive-dragon-1.wav",
+          "duration": 2.72
+        },
+        {
+          "index": 2,
+          "speaker": "dragon",
+          "text": "正正好，咱俩真默契。",
+          "file": "highfive-dragon-2.wav",
+          "duration": 1.93
+        }
+      ]
+    },
+    "highfive-whale": {
+      "behavior": "highfive",
+      "initiator": "whale",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "whale",
+          "text": "白龙白龙，快跟我击掌！",
+          "file": "highfive-whale-0.wav",
+          "duration": 2.53
+        },
+        {
+          "index": 1,
+          "speaker": "dragon",
+          "text": "哎哟，这一下还挺响。",
+          "file": "highfive-whale-1.wav",
+          "duration": 2.15
+        },
+        {
+          "index": 2,
+          "speaker": "whale",
+          "text": "手小归小，气势要够。",
+          "file": "highfive-whale-2.wav",
+          "duration": 2.64
+        }
+      ]
+    },
+    "nuzzle-dragon": {
+      "behavior": "nuzzle",
+      "initiator": "dragon",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "dragon",
+          "text": "靠过来，我给你留了位置。",
+          "file": "nuzzle-dragon-0.wav",
+          "duration": 1.81
+        },
+        {
+          "index": 1,
+          "speaker": "whale",
+          "text": "要再让点，我尾巴也想挨着。",
+          "file": "nuzzle-dragon-1.wav",
+          "duration": 3.04
+        },
+        {
+          "index": 2,
+          "speaker": "dragon",
+          "text": "好，连你的尾巴也算上。",
+          "file": "nuzzle-dragon-2.wav",
+          "duration": 2.45
+        }
+      ]
+    },
+    "nuzzle-whale": {
+      "behavior": "nuzzle",
+      "initiator": "whale",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "whale",
+          "text": "让我挨一小下，就一小下。",
+          "file": "nuzzle-whale-0.wav",
+          "duration": 2.64
+        },
+        {
+          "index": 1,
+          "speaker": "dragon",
+          "text": "挨吧，我给你把尾巴也挪好。",
+          "file": "nuzzle-whale-1.wav",
+          "duration": 2.4
+        },
+        {
+          "index": 2,
+          "speaker": "whale",
+          "text": "那我就多待一会儿。",
+          "file": "nuzzle-whale-2.wav",
+          "duration": 1.76
+        }
+      ]
+    },
+    "duet-dragon": {
+      "behavior": "duet",
+      "initiator": "dragon",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "dragon",
+          "text": "来，跟着我的拍子转一圈。",
+          "file": "duet-dragon-0.wav",
+          "duration": 2.07
+        },
+        {
+          "index": 1,
+          "speaker": "whale",
+          "text": "呀，我是不是踩到你了？",
+          "file": "duet-dragon-1.wav",
+          "duration": 2.6
+        },
+        {
+          "index": 2,
+          "speaker": "dragon",
+          "text": "差一点，下一拍往左！",
+          "file": "duet-dragon-2.wav",
+          "duration": 1.86
+        }
+      ]
+    },
+    "duet-whale": {
+      "behavior": "duet",
+      "initiator": "whale",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "whale",
+          "text": "看我甩尾巴，你也来一圈！",
+          "file": "duet-whale-0.wav",
+          "duration": 2.8
+        },
+        {
+          "index": 1,
+          "speaker": "dragon",
+          "text": "慢点转，尾巴快绊到我了。",
+          "file": "duet-whale-1.wav",
+          "duration": 2.03
+        },
+        {
+          "index": 2,
+          "speaker": "whale",
+          "text": "好，这次尾巴先歇着。",
+          "file": "duet-whale-2.wav",
+          "duration": 2.64
+        }
+      ]
+    },
+    "beckon-dragon": {
+      "behavior": "beckon",
+      "initiator": "dragon",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "dragon",
+          "text": "大肥鱼，过来陪我玩一下。",
+          "file": "beckon-dragon-0.wav",
+          "duration": 2.4
+        },
+        {
+          "index": 1,
+          "speaker": "whale",
+          "text": "来了来了！有鱼干吗？",
+          "file": "beckon-dragon-1.wav",
+          "duration": 2.3
+        },
+        {
+          "index": 2,
+          "speaker": "dragon",
+          "text": "你跑这么快，先歇口气。",
+          "file": "beckon-dragon-2.wav",
+          "duration": 1.97
+        }
+      ]
+    },
+    "beckon-whale": {
+      "behavior": "beckon",
+      "initiator": "whale",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "whale",
+          "text": "白龙过来，我发现个好地方！",
+          "file": "beckon-whale-0.wav",
+          "duration": 3.04
+        },
+        {
+          "index": 1,
+          "speaker": "dragon",
+          "text": "这里够宽，你的尾巴放得下。",
+          "file": "beckon-whale-1.wav",
+          "duration": 2.09
+        },
+        {
+          "index": 2,
+          "speaker": "whale",
+          "text": "对呀，还能放我的鱼干！",
+          "file": "beckon-whale-2.wav",
+          "duration": 2.32
+        }
+      ]
+    },
+    "starpass-dragon": {
+      "behavior": "starpass",
+      "initiator": "dragon",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "dragon",
+          "text": "接好啦，送你一颗小星星。",
+          "file": "starpass-dragon-0.wav",
+          "duration": 2.08
+        },
+        {
+          "index": 1,
+          "speaker": "whale",
+          "text": "好香呀，这颗星星能吃吗？",
+          "file": "starpass-dragon-1.wav",
+          "duration": 2.96
+        },
+        {
+          "index": 2,
+          "speaker": "dragon",
+          "text": "留着吧，晚上还能照亮。",
+          "file": "starpass-dragon-2.wav",
+          "duration": 1.8
+        }
+      ]
+    },
+    "starpass-whale": {
+      "behavior": "starpass",
+      "initiator": "whale",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "whale",
+          "text": "接球！闪闪的星星来了！",
+          "file": "starpass-whale-0.wav",
+          "duration": 2.64
+        },
+        {
+          "index": 1,
+          "speaker": "dragon",
+          "text": "接住了，这颗你藏了多久？",
+          "file": "starpass-whale-1.wav",
+          "duration": 2.04
+        },
+        {
+          "index": 2,
+          "speaker": "whale",
+          "text": "刚捡的！我先替你吹干净了。",
+          "file": "starpass-whale-2.wav",
+          "duration": 2.85
+        }
+      ]
+    },
+    "chase-dragon": {
+      "behavior": "chase",
+      "initiator": "dragon",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "dragon",
+          "text": "来追我！这回可别抄近路。",
+          "file": "chase-dragon-0.wav",
+          "duration": 2.71
+        },
+        {
+          "index": 1,
+          "speaker": "whale",
+          "text": "追到了，你请我吃鱼嘛？",
+          "file": "chase-dragon-1.wav",
+          "duration": 2.05
+        },
+        {
+          "index": 2,
+          "speaker": "dragon",
+          "text": "好啊，先追上我再说。",
+          "file": "chase-dragon-2.wav",
+          "duration": 1.78
+        }
+      ]
+    },
+    "chase-whale": {
+      "behavior": "chase",
+      "initiator": "whale",
+      "turns": [
+        {
+          "index": 0,
+          "speaker": "whale",
+          "text": "来比赛，跑赢的有鱼吃！",
+          "file": "chase-whale-0.wav",
+          "duration": 2.39
+        },
+        {
+          "index": 1,
+          "speaker": "dragon",
+          "text": "谁请客呀？我可没带鱼。",
+          "file": "chase-whale-1.wav",
+          "duration": 2.02
+        },
+        {
+          "index": 2,
+          "speaker": "whale",
+          "text": "嘿嘿，我请你看我吃鱼。",
+          "file": "chase-whale-2.wav",
+          "duration": 2.64
+        }
+      ]
+    }
+  }
+}

@@ -20,3 +20,9 @@ preferences.json
 status.json
 .idea/
 .vscode/
+
+companion/qa/
+companion/artwork-local/
+assets/dragon/Frames/
+assets/dragon/Dragon.icns
+assets/dragon/Dragon.png

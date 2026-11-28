@@ -6,6 +6,80 @@ struct WhaleVoiceLine: Decodable, Equatable {
     let file: String
 }
 
+struct WhaleDialogueRequest: Decodable, Equatable {
+    enum Speaker: String, Decodable { case dragon, whale }
+
+    struct Turn: Decodable, Equatable {
+        let index: Int
+        let speaker: Speaker
+        let text: String
+        let file: String
+        let offset: TimeInterval
+        let duration: TimeInterval
+    }
+
+    let script: String
+    let turns: [Turn]
+    let permitRequired: Bool?
+
+    func fits(sceneDuration: TimeInterval) -> Bool {
+        guard turns.count == 3 else { return false }
+        var nextOffset: TimeInterval = 0
+        for turn in turns {
+            guard (0.15...10).contains(turn.duration), turn.offset >= nextOffset else { return false }
+            nextOffset = turn.offset + turn.duration + 0.24
+        }
+        return nextOffset <= sceneDuration
+    }
+}
+
+struct WhaleDialogueRecording {
+    let turn: WhaleDialogueRequest.Turn
+    let player: AVAudioPlayer
+}
+
+private struct WhaleDialogueCatalog: Decodable {
+    struct Script: Decodable {
+        struct Line: Decodable {
+            let index: Int
+            let speaker: WhaleDialogueRequest.Speaker
+            let text: String
+            let file: String
+            let duration: TimeInterval
+        }
+
+        let behavior: String
+        let initiator: WhaleDialogueRequest.Speaker
+        let turns: [Line]
+    }
+
+    let version: Int
+    let scripts: [String: Script]
+
+    func recordings(for request: WhaleDialogueRequest, behavior: String, initiator: WhaleDialogueRequest.Speaker,
+                    directory: URL) -> [WhaleDialogueRecording]? {
+        guard version == 1, request.script == "\(behavior)-\(initiator.rawValue)",
+              let script = scripts[request.script], script.behavior == behavior, script.initiator == initiator,
+              request.turns.count == 3, script.turns.count == request.turns.count else { return nil }
+        for (index, pair) in zip(request.turns, script.turns).enumerated() {
+            let (turn, line) = pair
+            let speaker = index == 1 ? (initiator == .whale ? .dragon : .whale) : initiator
+            guard turn.index == index, line.index == index, turn.speaker == speaker, line.speaker == speaker,
+                  !line.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, turn.text == line.text,
+                  line.file == "\(request.script)-\(index).wav", turn.file == line.file,
+                  abs(turn.duration - line.duration) < 0.0005 else { return nil }
+        }
+        var recordings: [WhaleDialogueRecording] = []
+        for turn in request.turns where turn.speaker == .whale {
+            guard let player = try? AVAudioPlayer(contentsOf: directory.appendingPathComponent(turn.file)),
+                  player.duration.isFinite, abs(player.duration - turn.duration) < 0.015,
+                  player.prepareToPlay() else { return nil }
+            recordings.append(.init(turn: turn, player: player))
+        }
+        return recordings
+    }
+}
+
 struct WhaleVoiceCatalog {
     private struct Manifest: Decodable {
         let version: Int
@@ -50,6 +124,9 @@ final class WhaleSpeech {
     private let catalog: WhaleVoiceCatalog?
     private let catalogError: String?
     private let outputVolume: Float
+    private let dialogueVolume: Float
+    private let dialogueDirectory: URL
+    private let dialogueCatalog: WhaleDialogueCatalog?
     private var previousFile: [String: String] = [:]
     private var audio: AVAudioPlayer?
     private var timer: Timer?
@@ -59,17 +136,31 @@ final class WhaleSpeech {
     private var started = false
     private var error: String?
     private(set) var line: WhaleVoiceLine?
+    private(set) var dialogueWasMuted = false
     var onChange: (() -> Void)?
     var muted = false {
         didSet {
             guard muted != oldValue else { return }
-            if muted { audio?.stop(); audio = nil }
+            if muted {
+                if event == "dialogue" { dialogueWasMuted = true }
+                audio?.stop()
+                audio = nil
+            }
             onChange?()
         }
     }
 
     init(resources: URL, quietTest: Bool = false) {
         outputVolume = quietTest ? 0 : 1
+        let environment = ProcessInfo.processInfo.environment
+        let quietDialogueTest = environment["DESKTOP_PET_MANAGED"] == "1"
+            && environment["DESKTOP_PET_HUB_QUIET"] == "1" && environment["DESKTOP_PET_AUDIO_TEST_SILENT"] == "1"
+        dialogueVolume = quietDialogueTest ? 0 : outputVolume
+        let directory = resources.appendingPathComponent("Dialogue", isDirectory: true)
+        dialogueDirectory = directory
+        dialogueCatalog = (try? Data(contentsOf: directory.appendingPathComponent("manifest.json"))).flatMap {
+            try? JSONDecoder().decode(WhaleDialogueCatalog.self, from: $0)
+        }
         do {
             catalog = try WhaleVoiceCatalog(resources: resources)
             catalogError = nil
@@ -77,6 +168,32 @@ final class WhaleSpeech {
             catalog = nil
             catalogError = error.localizedDescription
         }
+    }
+
+    func prepareDialogue(_ request: WhaleDialogueRequest, behavior: String,
+                         initiator: WhaleDialogueRequest.Speaker) -> [WhaleDialogueRecording]? {
+        dialogueCatalog?.recordings(for: request, behavior: behavior, initiator: initiator, directory: dialogueDirectory)
+    }
+
+    func speakDialogue(_ recording: WhaleDialogueRecording) -> Bool {
+        reset()
+        let sound = recording.player
+        sound.volume = dialogueVolume
+        if !muted {
+            guard sound.play() else { return false }
+            audio = sound
+            started = true
+        }
+        dialogueWasMuted = muted
+        event = "dialogue"
+        line = WhaleVoiceLine(text: recording.turn.text, file: recording.turn.file)
+        duration = sound.duration
+        captionDuration = duration
+        return true
+    }
+
+    func stopDialogue() {
+        if event == "dialogue" { reset() }
     }
 
     func speak(_ key: String) {
@@ -134,6 +251,7 @@ final class WhaleSpeech {
         captionDuration = 0
         started = false
         error = nil
+        dialogueWasMuted = false
     }
 
     private func scheduleExpiry(after delay: TimeInterval) {
